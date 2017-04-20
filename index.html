@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GameTabs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="jq/rating/jquery.raty.css" rel="stylesheet" type="text/css" />
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+
+    <!-- rating  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="jq/rating/jquery.raty.js"></script>
+
+
+
+
+</head>
+<body>
+    <main class="main-block">
+        <header class="header">
+            <div class="tab-link tab-link--active" onclick="showGame(event, '#farCry')">
+                <img src="imgs/info.svg" alt="Info">
+                <h1>INFORMATION</h1>
+            </div>
+            <div class="tab-link" onclick="showGame(event, '#rating')">
+                <img src="imgs/card.svg" alt="Card">
+                <h1>RATINGS INFO</h1>
+            </div>
+            <div class="tab-link" onclick="showGame(event, '#buy')">
+                <img src="imgs/basket.svg" alt="Basket">
+                <h1>WHERE TO BUY</h1>
+            </div>
+        </header>
+        <section id="farCry" class="tab-content tab-active">
+            <div class="tab-content__general-img">
+                <img src="imgs/game.png" alt="Game">
+                <div class="raty"></div>
+            </div>
+            <div class="tab-content__info">
+                <img src="imgs/raiting.png" alt="Raiting">
+                <h2>FarCry 4</h2>
+                <h3>First Released Nov 17, 2014</h3>
+                <p class="tab-content__info-text">In Far Cry 4, players find themselves in Kyrat, a breathtaking, perilous and wild region of the Hima
+                        layas struggling under the regime of a despotic self-appointed king.</p>
+                <div class="tab-content__info-buy">
+                    <div>
+                        <p>20% OFF!</p>
+                        <p>$59.96</p>
+                    </div>
+                    <button>BUY IT NOW</button>
+                </div>
+            </div>
+        </section>
+        <section id="rating" class="tab-content">
+            <p>Some info</p>
+        </section>
+        <section id="buy" class="tab-content">
+            <p>Some info</p>
+        </section>
+    </main>
+
+    <script>
+
+
+        function showGame(event, contentName) {
+            // Declare all variables
+            let tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.querySelectorAll(".tab-content");
+            tabcontent.forEach(tab => {
+                tab.classList.remove('tab-active');
+        });
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.querySelectorAll(".tab-link");
+            tablinks.forEach(tabLink => {
+                tabLink.classList.remove('tab-link--active');
+        });
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.querySelector(contentName).classList.add('tab-active');
+            event.currentTarget.classList.add('tab-link--active');
+        }
+        $('.raty').raty({ starType: 'i' });
+
+
+         /* Следующий код не работает, т.к. не удаётся подвязать конкретную tab-link к конкретному tab-content
+
+        function showTab(event) {
+            // Declare all variables
+            let tabs, tabLinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabs = document.querySelectorAll(".tab-content");
+            tabs.forEach(tab => {
+                tab.classList.remove('tab-active');
+            });
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tabLinks = document.querySelectorAll(".tab-link");
+            tabLinks.forEach(tabLink => {
+                tabLink.classList.remove('tab-link--active');
+            });
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+
+            ------> В следующих двух строчках надо как-то подвязать tab-content к tab-link. Событие для tab-link срабатывает,
+                    а tab-content не меняется
+            let tabContent = document.querySelector('.tab-content');
+            tabContent.classList.add('tab-active');
+
+            this.classList.add('tab-link--active');
+        }
+
+        document.addEventListener('DOMContentLoaded',() => {
+            document.querySelectorAll('.tab-link').forEach(tabLink => {
+                tabLink.addEventListener('click', showTab)
+            });
+        });
+        */
+
+    </script>
+
+</body>
+</html>
